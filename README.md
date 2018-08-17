@@ -1,16 +1,17 @@
-# TesteIcasei
+# Teste iCasei: Front-End Juan Carlos Coral
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+Este projeto foi gerado por [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
-## Development server
+## Servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Execute no seu terminal de cmando `ng serve` para servidor de desenvolvimento. Navegue para `http://localhost:4200/` no seu navegador web. 
+O aplicativo irá recarregar automeaticamente se você faz alterações nos arquivos fonte.
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Compilação da
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
