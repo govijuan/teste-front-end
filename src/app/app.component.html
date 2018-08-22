@@ -1,4 +1,25 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-search-form (sumbittedValue) = "videoSearchSubmit($event)"></app-search-form>
+<section *ngIf="searchSubmitted"  class="search-result-list-section">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let videoItem of vResultList" class="col-md-4 list-item-wrap">
+        <div class="video-thumbnail">
+          <img src="{{videoItem.snippet.thumbnails.high.url}}" alt=""/>
+        </div>
+        <div class="v-title-wrap">
+          <h4>{{videoItem.snippet.title}}</h4>
+        </div>
+        <div class="v-chanel-name">
+          {{videoItem.snippet.channelTitle}}
+        </div>
+        <div class="v-description">
+          {{videoItem.snippet.description}}
+        </div>
+        <button class="btn btn-success detalhes-video-link">Detalhes do Vídeo</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 

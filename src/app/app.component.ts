@@ -11,18 +11,22 @@ import { SearchListService } from './search-list.service';
 })
 export class AppComponent {
   constructor(private _searchListService: SearchListService){}
-  searchSubmitted:any = 'inactive';
+  searchSubmitted: boolean = false;
   vResultList: any[];
+  nextPageToken: string;
+  currentSearchTerm:string;
   videoSearchSubmit(searchValue: string){
-    //console.log(searchValue);
     this._searchListService.searchFor(searchValue)
     .subscribe(
       (searchResponseData: any[]) => {
         this.vResultList = searchResponseData.items;
+        //this.nextPageToken = searchResponseData.nextPageToken;
+        //this.currentSearchTerm = searchValue;
       },
       error => alert(error),
       () => {
-        console.log(JSON.stringify(this.vResultList))
+        this.searchSubmitted = true;
+        console.log(this.nextPageToken);
       }
     )
   }

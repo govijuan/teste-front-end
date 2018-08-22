@@ -1,0 +1,32 @@
+.search-result-list-section{
+  padding: 15px 0;
+  .list-item-wrap{
+    margin-bottom: 30px;
+    .video-thumbnail{
+      img{
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    .v-title-wrap{
+      h4{
+        height: 40px;
+        overflow: hidden;
+      }
+    }
+    .detalhes-video-link{
+      text-transform: uppercase;
+    }
+    .v-description, .v-chanel-name{
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .v-chanel-name{
+      font-weight: bold;
+    }
+    .v-description{
+      height: 69px;
+    }
+  }
+}
