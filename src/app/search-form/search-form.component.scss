@@ -1,0 +1,10 @@
+.video-s-form-section{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.v-seach-submit-btn{
+  cursor: pointer;
+  &:hover, &:active{
+    background-color: #cccccc; 
+  }
+}
