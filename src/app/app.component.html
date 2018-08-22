@@ -3,7 +3,7 @@
 <section *ngIf="searchSubmitted"  class="search-result-list-section">
   <div class="container">
     <div class="row">
-      <div *ngFor="let videoItem of vResultList" class="col-md-4 list-item-wrap">
+      <div *ngFor="let videoItem of vResultList" class="col-sm-4 col-md-4 list-item-wrap">
         <div class="video-thumbnail">
           <img src="{{videoItem.snippet.thumbnails.high.url}}" alt=""/>
         </div>
