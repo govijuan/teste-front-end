@@ -13,15 +13,21 @@ export class AppComponent {
   constructor(private _searchListService: SearchListService){}
   searchSubmitted: boolean = false;
   vResultList: any[];
+  vResults: any[];
   nextPageToken: string;
+  prevPageToken: string;
   currentSearchTerm:string;
-  videoSearchSubmit(searchValue: string){
-    this._searchListService.searchFor(searchValue)
+  
+  videoSearchSubmit(searchValue: string, pageToken: string){
+    this._searchListService.searchFor(searchValue, pageToken )
     .subscribe(
-      (searchResponseData: any[]) => {
+      (searchResponseData: any) => {
+        this.vResults = searchResponseData
         this.vResultList = searchResponseData.items;
+        this.nextPageToken = '&pageToken=' + searchResponseData.nextPageToken;
+        this.prevPageToken = '&pageToken=' + searchResponseData.prevPageToken;
         //this.nextPageToken = searchResponseData.nextPageToken;
-        //this.currentSearchTerm = searchValue;
+        this.currentSearchTerm = searchValue;
       },
       error => alert(error),
       () => {
@@ -29,5 +35,14 @@ export class AppComponent {
         console.log(this.nextPageToken);
       }
     )
+  }
+  setNextPageToken(setOrUnset: boolean, pageToken){
+
+  }
+  resetSubmittedSate(){
+    this.searchSubmitted = false;
+    this.nextPageToken = '';
+    this.prevPageToken = '';
+
   }
 }
