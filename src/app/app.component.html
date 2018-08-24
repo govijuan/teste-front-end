@@ -22,17 +22,15 @@
   </div>
   <nav aria-label="Page navigation" class="text-center">
       <ul class="pagination">
-        <li>
+        <li [ngClass]="{ 'disabled' : currentPageNum == 1}">
           <a  aria-label="Previous">
-            <span (click)="videoSearchSubmit(currentSearchTerm, prevPageToken)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
+            <span (click)="videoSearchSubmit(currentSearchTerm, prevPageToken);resetPagination(-1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
           </a>
         </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
+        <li *ngFor="let pageLink of pageCoutArray"><a href="#">{{pageLink}}</a></li>
         <li>
           <a aria-label="Next">
-            <span (click)="videoSearchSubmit(currentSearchTerm, nextPageToken)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>
+            <span (click)="videoSearchSubmit(currentSearchTerm, nextPageToken); pageSumbitted = true; resetPagination(1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>
           </a>
         </li>
       </ul>

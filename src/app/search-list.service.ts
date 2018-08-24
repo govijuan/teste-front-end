@@ -18,7 +18,7 @@ export class SearchListService {
       //retorna busca direto do campo de busca, ou seja primeira página da busca, primeiros 6 resultados
       searchString = this._baseUrl + searchTerm + this._apiKeyEndpoint;
     }
-    console.log(searchString);
+    //console.log(searchString);
     return this.http.get(searchString);
   }
 }
