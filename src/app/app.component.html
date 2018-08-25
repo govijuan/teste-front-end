@@ -27,7 +27,7 @@
             <span (click)="videoSearchSubmit(currentSearchTerm, prevPageToken);resetPagination(-1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
           </a>
         </li>
-        <li *ngFor="let pageLink of pageCoutArray"><a href="#">{{pageLink}}</a></li>
+        <li [ngClass]="{ 'active' : currentPageNum == pageLink }" *ngFor="let pageLink of pageCoutArray"><a href="#">{{pageLink}}</a></li>
         <li [ngClass]="{ 'disabled' : currentPageNum == maxPageNumber}">
           <a aria-label="Next">
             <span (click)="videoSearchSubmit(currentSearchTerm, nextPageToken); pageSumbitted = true; resetPagination(1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>

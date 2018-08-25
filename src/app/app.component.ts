@@ -36,7 +36,7 @@ export class AppComponent {
         this.currentSearchTerm = searchValue;
         this.totalSearchResults = searchResponseData.pageInfo.totalResults;
       },
-      error => ,
+      error => {console.log('Error Message: ' + error.message)},
       () => {
         this.searchSubmitted = true;
         if(!this.prevPageToken){
@@ -44,7 +44,7 @@ export class AppComponent {
           
         }
         //console.log('Page Token: ' + this.nextPageToken + ' -- PageSubmited: ' + this.pageSumbitted);
-        console.log('Current Page Number: ' + this.currentPageNum + ' -- Page Count Array: ' + this.pageCoutArray);
+        //console.log('Current Page Number: ' + this.currentPageNum + ' -- Page Count Array: ' + this.pageCoutArray);
 
         this.setTotalPagesCount(this.totalSearchResults);
         //console.log('Total Search Result: ' + this.totalSearchResults + ' -- Maximum page number: ' + this.maxPageNumber);
@@ -52,7 +52,7 @@ export class AppComponent {
     )
   }
   resetPagination(advanceRange: number){
-    if((this.currentPageNum + advanceRange) > 0){
+    if((this.currentPageNum + advanceRange) > 0 && (this.currentPageNum + advanceRange) <= this.maxPageNumber){
       this.currentPageNum += advanceRange;
       this.pageCoutArray = this.pageCoutArray.map((value)=>{return value + advanceRange});
     }
