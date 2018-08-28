@@ -17,7 +17,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class SearchFormComponent implements OnInit {
   @Input() searchSumbitted: string;
   @Output() sumbittedValue = new EventEmitter<string>();
-  //@Output() notPageSubmited = new EventEmitter<boolean>();
   constructor() { }
   displayDetail: boolean = false;
   submitted: string = 'inactive';

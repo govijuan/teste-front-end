@@ -21,4 +21,8 @@ export class SearchListService {
     //console.log(searchString);
     return this.http.get(searchString);
   }
+  retrieveVideoInfo(videoId: string){
+    let queryUrl:string  = 'https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&part=snippet,statistics&key=AIzaSyCnudY3zFXadYcuMKinkmoi2xWo8gcl_X8';
+    return this.http.get(queryUrl);
+  }
 }

@@ -1,12 +1,29 @@
 import { Component } from '@angular/core';
 import { SearchListService } from './search-list.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [SearchListService]
+  providers: [SearchListService],
+  animations: [
+    trigger('detailedVideo', [
+      state('in', style({ transform: 'translateX(0)'})),
+      transition('void => *', [
+        style({transform: 'translateX(100%)'}),
+        animate(400)
+      ]),
+      transition('* => in', [
+        animate(400, style({transform: 'translateX(0)'}))
+      ]),
+      transition('* => void', [
+        style({transform: 'translateX(100%)'}),
+        animate(400)
+      ])
+    ])
+  ]
   
 })
 export class AppComponent {
@@ -23,7 +40,12 @@ export class AppComponent {
   currentPageNum: number = 1;
   pageCoutArray: any = [1,2,3];
   maxPageNumber: number;
-  totalSearchResults: number;
+  public totalSearchResults: number;
+
+  // Para Video Detalhado
+  detailedVideo: string;
+  currVideoObject: any;
+  
   
   videoSearchSubmit(searchValue: string, pageToken: string){
     this._searchListService.searchFor(searchValue, pageToken )
@@ -64,5 +86,19 @@ export class AppComponent {
       this.maxPageNumber = pageNumber + 1;
     else if(pageNumberRemainder = 0)
       this.maxPageNumber = pageNumber;
+  }
+  showDetailedVideo(videoID: string){
+    this._searchListService.retrieveVideoInfo(videoID)
+    .subscribe(
+      (currVideoResponseData:any) =>{
+        this.currVideoObject = currVideoResponseData.items[0];
+      },
+      error => {console.log('Error Message: ' + error.message)},
+      () => {
+        console.log(JSON.stringify(this.currVideoObject));
+        this.detailedVideo = 'in';
+      },
+      
+    )
   }
 }

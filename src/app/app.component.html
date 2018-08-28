@@ -16,7 +16,7 @@
         <div class="v-description">
           {{videoItem.snippet.description}}
         </div>
-        <button class="btn btn-success detalhes-video-link">Detalhes do Vídeo</button>
+        <button (click)="showDetailedVideo(videoItem.id.videoId)" class="btn btn-success detalhes-video-link">Detalhes do Vídeo</button>
       </div>
     </div>
   </div>
@@ -36,5 +36,6 @@
       </ul>
     </nav>
 </section>
+<app-detailed-video *ngIf="currVideoObject" [videoData]= "currVideoObject" [@detailedVideo]="detailedVideo"  class="currVideoSection"></app-detailed-video>
 
 
