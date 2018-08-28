@@ -65,3 +65,13 @@
   width: 100%;
   transform: translateX(100%);
 }
+
+/* Styles for the No search results div */
+.no-search-results-wrap{
+  .sadface{
+    display: inline-block;
+    transform: rotate(90deg);
+    position: relative;
+    font-size: 40px;
+  }
+}

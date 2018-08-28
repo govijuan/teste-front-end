@@ -1,7 +1,7 @@
 <app-search-form (sumbittedValue) = "videoSearchSubmit($event)"></app-search-form>
 
 <section *ngIf="searchSubmitted"  class="search-result-list-section">
-  <div class="container">
+  <div *ngIf="vResultList.length > 0" class="container">
     <div class="row">
       <div *ngFor="let videoItem of vResultList" class="col-sm-4 col-md-4 list-item-wrap">
         <div class="video-thumbnail">
@@ -20,21 +20,32 @@
       </div>
     </div>
   </div>
-  <nav aria-label="Page navigation" class="text-center">
-      <ul class="pagination">
-        <li [ngClass]="{ 'disabled' : currentPageNum == 1}">
-          <a  aria-label="Previous">
-            <span (click)="videoSearchSubmit(currentSearchTerm, prevPageToken);resetPagination(-1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
-          </a>
-        </li>
-        <li [ngClass]="{ 'active' : currentPageNum == pageLink }" *ngFor="let pageLink of pageCoutArray"><a href="#">{{pageLink}}</a></li>
-        <li [ngClass]="{ 'disabled' : currentPageNum == maxPageNumber}">
-          <a aria-label="Next">
-            <span (click)="videoSearchSubmit(currentSearchTerm, nextPageToken); pageSumbitted = true; resetPagination(1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+  <nav *ngIf="vResultList.length > 0" aria-label="Page navigation" class="text-center">
+    <ul class="pagination">
+      <li [ngClass]="{ 'disabled' : currentPageNum == 1}">
+        <a  aria-label="Previous">
+          <span (click)="videoSearchSubmit(currentSearchTerm, prevPageToken);resetPagination(-1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
+        </a>
+      </li>
+      <li [ngClass]="{ 'active' : currentPageNum == pageLink }" *ngFor="let pageLink of pageCoutArray"><a href="#">{{pageLink}}</a></li>
+      <li [ngClass]="{ 'disabled' : currentPageNum == maxPageNumber}">
+        <a aria-label="Next">
+          <span (click)="videoSearchSubmit(currentSearchTerm, nextPageToken); pageSumbitted = true; resetPagination(1)" aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div *ngIf="vResultList.length <= 0" class="no-search-results-wrap">
+    <div class="container text-center">
+      <div class="row">
+        <div class="sadface">:(</div>
+      </div>
+      <div class="row">
+        <p>Não encontramos vídeos com o termo buscado.</p>
+        <p>Utilize outras palavras-chave.</p>
+      </div>
+    </div>
+  </div>
 </section>
 <app-detailed-video *ngIf="currVideoObject" [videoData]= "currVideoObject" [@detailedVideo]="detailedVideo"  class="currVideoSection"></app-detailed-video>
 
