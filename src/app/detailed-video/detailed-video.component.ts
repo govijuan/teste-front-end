@@ -7,7 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DetailedVideoComponent {
   @Input() public videoData: any;
-  //@Outup() public notDetailedView = new EventEmitter<string>;
+  @Output() public notDetailedView = new EventEmitter<string>();
   constructor(private sanitizer: DomSanitizer) { }
 
   sanitizedVideoUrl(videoId: string){
