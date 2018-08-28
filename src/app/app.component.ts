@@ -15,6 +15,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         style({transform: 'translateX(100%)'}),
         animate(400)
       ]),
+      transition('in => out', [
+        animate(400, style({transform: 'translateX(100%)'}))
+      ]),
       transition('* => in', [
         animate(400, style({transform: 'translateX(0)'}))
       ]),
@@ -79,6 +82,10 @@ export class AppComponent {
       this.pageCoutArray = this.pageCoutArray.map((value)=>{return value + advanceRange});
     }
   }
+  setNotDetailedView(notDetailedViewVal: string){
+    this.detailedVideo = notDetailedViewVal;
+    console.log('Valor de não detalhado: ' + notDetailedViewVal);
+  }
   setTotalPagesCount(totalSearchResults: number){
     let pageNumberRemainder = totalSearchResults % 6;
     let pageNumber = Math.floor(totalSearchResults / 6);
@@ -95,7 +102,7 @@ export class AppComponent {
       },
       error => {console.log('Error Message: ' + error.message)},
       () => {
-        console.log(JSON.stringify(this.currVideoObject));
+        //console.log(JSON.stringify(this.currVideoObject));
         this.detailedVideo = 'in';
       },
       

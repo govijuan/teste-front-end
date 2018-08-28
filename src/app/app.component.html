@@ -1,5 +1,5 @@
 <app-search-form (sumbittedValue) = "videoSearchSubmit($event)"></app-search-form>
-
+<div class="notDetailedinfoReciever" (notDetailedView)="setNotDetailedView($event)"></div>
 <section *ngIf="searchSubmitted"  class="search-result-list-section">
   <div *ngIf="vResultList.length > 0" class="container">
     <div class="row">

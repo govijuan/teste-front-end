@@ -32,6 +32,7 @@
   padding:15px 15px 0;
   position: absolute;
   top: 0;
+  z-index: 20;
   .d-video-back-link{
     padding: 4px 7px;
     border: 1px solid #333;
@@ -40,3 +41,32 @@
   }
 }
 
+/* General layout styles */
+.video-details-wrap{
+  @media (max-width: 767px){
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 37px;
+  }
+}
+
+/* Video general Info Styles */
+.likes-wrap{
+  .likes, .deslikes{
+    i{
+      height: 16px;
+      width: 16px;
+      display: inline-block;
+      svg{
+        width: 100%;
+      }
+    }
+  }
+  .deslike-icon{
+    transform: rotate(180deg);
+  }
+}
+.nome-canal{
+  padding-left:0;
+  font-weight: bold;
+}

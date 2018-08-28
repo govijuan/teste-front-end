@@ -7,12 +7,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DetailedVideoComponent {
   @Input() public videoData: any;
-
+  //@Outup() public notDetailedView = new EventEmitter<string>;
   constructor(private sanitizer: DomSanitizer) { }
-  
+
   sanitizedVideoUrl(videoId: string){
     let unsanitizedUrl = 'https://www.youtube.com/embed/' + videoId;
     return this.sanitizer.bypassSecurityTrustResourceUrl(unsanitizedUrl);
   }
-
+  /*sendNotDetaileView(){
+    this.notDetailedView.emit('out');
+  }*/
 }
