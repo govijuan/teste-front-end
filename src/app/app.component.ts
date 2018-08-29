@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchListService } from './search-list.service';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition , keyframes} from '@angular/animations';
 
 
 @Component({
@@ -10,21 +10,28 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   providers: [SearchListService],
   animations: [
     trigger('detailedVideo', [
-      state('in', style({ transform: 'translateX(0)'})),
+      state('in', style({ transform: 'translateX(0)', opacity: '1', width: '100%', zIndex: '10'})),
       transition('void => *', [
-        style({transform: 'translateX(100%)'}),
-        animate(400)
+        animate('400ms ease-in', keyframes([
+          style({width: '0', opacity: '0', transform: 'translateX(100%)', zIndex: '-1', offset: 0}),
+          style({width: '100%', opacity: '0', transform: 'translateX(100%)', zIndex: '10', offset: 0.2}),
+          style({width: '100%', opacity: '1', transform: 'translateX(0)', zIndex: '10', offset: 1.0})
+        ]))
       ]),
-      transition('in => out', [
-        animate(400, style({transform: 'translateX(100%)'}))
+      transition('in => void', [
+        animate('400ms ease-in', keyframes([
+          style({width: '100%', opacity: '1', transform: 'translateX(0)', offset: 0}),
+          style({width: '100%', opacity: '0', transform: 'translateX(80%)', offset: 0.80}),
+          style({width: '0', opacity: '0', transform: 'translateX(100%)', zIndex: '-1', offset: 1.0})
+        ]))
       ]),
       transition('* => in', [
         animate(400, style({transform: 'translateX(0)'}))
-      ]),
-      transition('* => void', [
+      ])
+      /*transition('in => void', [
         style({transform: 'translateX(100%)'}),
         animate(400)
-      ])
+      ])*/
     ])
   ]
   
@@ -84,6 +91,7 @@ export class AppComponent {
   }
   setNotDetailedView(notDetailedViewVal: string){
     this.detailedVideo = notDetailedViewVal;
+    this.currVideoObject = '';
     console.log('Valor de não detalhado: ' + notDetailedViewVal);
   }
   setTotalPagesCount(totalSearchResults: number){
@@ -104,6 +112,7 @@ export class AppComponent {
       () => {
         //console.log(JSON.stringify(this.currVideoObject));
         this.detailedVideo = 'in';
+        console.log('Valor de layout de video detalhado: ' + this.detailedVideo);
       },
       
     )
