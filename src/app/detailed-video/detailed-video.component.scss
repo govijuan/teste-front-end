@@ -22,6 +22,7 @@
 }
 .embed-responsive-16by9 {
   padding-bottom: 56.25%;
+  margin-bottom: 15px;
 }
 .embed-responsive-4by3 {
   padding-bottom: 75%;
@@ -48,19 +49,29 @@
     padding-right: 30px;
     margin-top: 37px;
   }
+  .d-video-title{
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
 }
 
 /* Video general Info Styles */
 .likes-wrap{
   .likes, .deslikes{
+    font-weight: bold;
     i{
       height: 16px;
       width: 16px;
       display: inline-block;
+      position: relative;
+      top: 3px; 
       svg{
         width: 100%;
       }
     }
+  }
+  .likes{
+    margin-right: 20px;
   }
   .deslike-icon{
     transform: rotate(180deg);
@@ -68,5 +79,15 @@
 }
 .nome-canal{
   padding-left:0;
+  font-weight: bold;
+}
+.nome-canal, .likes-wrap, .video-description{
+  margin-bottom: 15px;
+}
+.video-description{
+  max-height: 400px;
+  overflow: hidden;
+}
+.views-count{
   font-weight: bold;
 }
