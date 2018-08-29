@@ -24,14 +24,7 @@ import { trigger, state, style, animate, transition , keyframes} from '@angular/
           style({width: '100%', opacity: '0', transform: 'translateX(80%)', offset: 0.80}),
           style({width: '0', opacity: '0', transform: 'translateX(100%)', zIndex: '-1', offset: 1.0})
         ]))
-      ]),
-      transition('* => in', [
-        animate(400, style({transform: 'translateX(0)'}))
       ])
-      /*transition('in => void', [
-        style({transform: 'translateX(100%)'}),
-        animate(400)
-      ])*/
     ])
   ]
   
@@ -92,7 +85,6 @@ export class AppComponent {
   setNotDetailedView(notDetailedViewVal: string){
     this.detailedVideo = notDetailedViewVal;
     this.currVideoObject = '';
-    console.log('Valor de não detalhado: ' + notDetailedViewVal);
   }
   setTotalPagesCount(totalSearchResults: number){
     let pageNumberRemainder = totalSearchResults % 6;
@@ -110,9 +102,7 @@ export class AppComponent {
       },
       error => {console.log('Error Message: ' + error.message)},
       () => {
-        //console.log(JSON.stringify(this.currVideoObject));
         this.detailedVideo = 'in';
-        console.log('Valor de layout de video detalhado: ' + this.detailedVideo);
       },
       
     )
