@@ -46,7 +46,9 @@
     </div>
   </div>
 </section>
-<app-video-list-slider *ngIf="searchSubmitted"></app-video-list-slider>
+<div class="container">
+  <app-video-list-slider [videoSliderData]="vResultList" *ngIf="searchSubmitted"></app-video-list-slider>
+</div>
 <app-detailed-video *ngIf="currVideoObject" [videoData]= "currVideoObject" [@detailedVideo]="detailedVideo" (notDetailedView)="setNotDetailedView($event)" class="currVideoSection"></app-detailed-video>
 
 
